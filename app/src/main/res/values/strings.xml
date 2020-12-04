@@ -1,15 +1,17 @@
 <resources>
     <string name="app_name">CalcIMC</string>
     <string name="startButton">Empezar</string>
-    <string name="motivationalSentence">Orandum est ut sit mens sana in corpore sano.</string>
+    <string name="motivationalSentence">\"Orandum est ut sit mens sana in corpore sano\".</string>
     <string name="name">Nombre:</string>
     <string name="age">Edad:</string>
-    <string name="sex">Sexo:</string>
+    <string name="gender">Género:</string>
     <string name="height">Altura:</string>
     <string name="weight">Peso:</string>
     <string name="result">Resultado:</string>
     <string name="calcBMI">Calcula tu IMC y FCmax introduciendo los siguientes datos:</string>
     <string name="male">Varón</string>
     <string name="female">Mujer</string>
-    <string name="test">Test this :)</string>
+    <string name="calc">Calcular</string>
+    <string name="results">Resultados</string>
+
 </resources>
