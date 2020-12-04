@@ -23,5 +23,7 @@
     <string name="obesityII">Obesidad de tipo II</string>
     <string name="obesityIII">Obesidad mórbida</string>
     <string name="obesityIV">Obesidad extrema</string>
+    <string name="sedentary">Estilo de vida sendentario:</string>
+    <string name="trained">Estilo de vida activo:</string>
 </resources>
 

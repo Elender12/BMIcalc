@@ -41,10 +41,15 @@ public class CalcActivity extends AppCompatActivity {
         btn.setOnClickListener(v -> {
             float resultsBmi = calculateBMI();
             double [] resultsFCMax = calculateFCMax();
-            Intent intent = new Intent(this, ResultsActivity.class);
-            intent.putExtra("bmi", resultsBmi);
-            intent.putExtra("fcmax", resultsFCMax);
-            startActivity(intent);
+            if(radioGroup.getCheckedRadioButtonId() != -1 && height.getText().length() != 0 && weight.getText().length() != 0 && age.getText().length() != 0){
+                Intent intent = new Intent(this, ResultsActivity.class);
+                intent.putExtra("bmi", resultsBmi);
+                intent.putExtra("fcmax", resultsFCMax);
+                startActivity(intent);
+            }else {
+                Toast.makeText(this, "Rellene todos los campos, por favor", Toast.LENGTH_LONG).show();
+            }
+
         });
     }
     private float calculateBMI() {
@@ -54,7 +59,6 @@ public class CalcActivity extends AppCompatActivity {
             float heightValue = Float.parseFloat(String.valueOf(height.getText()));
             result = (float) (weightValue / Math.pow(heightValue, 2));
         } catch (NumberFormatException nfe) {
-            Toast.makeText(this, "Has introducido unos valores incorrectos.", Toast.LENGTH_LONG);
         }
         return result;
     }
@@ -68,26 +72,33 @@ public class CalcActivity extends AppCompatActivity {
     private double[] calculateFCMax() {
         //primera posición valores para personas sedentarias, segunda posicion p
         double[] results = new double[2];
-
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
-        {
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.radioFemale) {
-                    //Mujeres entrenadas: FCmax = 214 – (0,8 x edad)
-                    //Mujeres sedentarias: 225 - edad
-                    double sedentaryFCMax = 225 - Integer.parseInt(String.valueOf(age.getText()));
-                    double trainedFCMax = 214 - (0.8 *  (Integer.parseInt(String.valueOf(age.getText()))));
-                    results[0] = sedentaryFCMax;
-                    results[1] = trainedFCMax;
-                } else if (checkedId == R.id.radioMale) {
-                    //Hombres: FCmax = 209 – (0,7 x edad)
-                    double sedentaryFCMax = 220 - Integer.parseInt(String.valueOf(age.getText()));
-                    double trainedFCMax = 209 - (0.7 * (Integer.parseInt(String.valueOf(age.getText()))));
-                    results[0] = sedentaryFCMax;
-                    results[1] = trainedFCMax;
-                }
+        int checkedId =  radioGroup.getCheckedRadioButtonId();
+        int ageValue = 0;
+        boolean isValidAge;
+        try{
+            ageValue = Integer.parseInt(String.valueOf(age.getText()));
+            isValidAge = true;
+        }catch(NumberFormatException nfe){
+            isValidAge = false;
+        }
+        if(isValidAge){
+            if (checkedId == R.id.radioFemale) {
+                //Mujeres entrenadas: FCmax = 214 – (0,8 x edad)
+                //Mujeres sedentarias: 225 - edad
+                double sedentaryFCMax = 225 - ageValue;
+                double trainedFCMax = 214 - (0.8 *  ageValue);
+                Log.d(TAG, "onCheckedChanged: "+sedentaryFCMax+" "+trainedFCMax);
+                results[0] = sedentaryFCMax;
+                results[1] = trainedFCMax;
             }
-        });
+            if (checkedId == R.id.radioMale) {
+                //Hombres: FCmax = 209 – (0,7 x edad)
+                double sedentaryFCMax = 220 - ageValue;
+                double trainedFCMax = 209 - (0.7 *  ageValue);
+                results[0] = sedentaryFCMax;
+                results[1] = trainedFCMax;
+            }
+        }
         return results;
     }
 }

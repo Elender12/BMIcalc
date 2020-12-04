@@ -11,7 +11,7 @@ import java.text.DecimalFormat;
 import java.util.Locale;
 
 public class ResultsActivity extends AppCompatActivity {
-    TextView results, bmiTV, bmiClasification;
+    TextView results, bmiTV, bmiClasification, sedentaryTV, activeTV;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +27,9 @@ public class ResultsActivity extends AppCompatActivity {
         results = findViewById(R.id.textViewResults);
         bmiTV = findViewById(R.id.TV_bmiValue);
         bmiClasification = findViewById(R.id.TV_clasification);
+        sedentaryTV = findViewById(R.id.TV_sedentary);
+        activeTV = findViewById(R.id.TV_active);
+
 
         ObjectAnimator animation = ObjectAnimator.ofFloat(results, "scaleX", 2);
         animation.setDuration(4000);
@@ -72,6 +75,8 @@ public class ResultsActivity extends AppCompatActivity {
             bmiClasification.setText(getString(R.string.obesityIV));
             bmiClasification.setTextColor(getColor(R.color.extremeWarning));
         }
+        sedentaryTV.setText(String.format("%s",fcMaxValue[0]));
+        activeTV.setText(String.format("%s", fcMaxValue[1]));
 
 
 
