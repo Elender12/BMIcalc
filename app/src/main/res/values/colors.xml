@@ -9,4 +9,11 @@
     <color name="white">#FFFFFFFF</color>
     <color name="main_color">#020c52</color>
     <color name="secondary">#5c9df2</color>
+    <color name="warningI">#f5c842</color>
+    <color name="warningII">#f59942</color>
+    <color name="severeWarning">#f55d42</color>
+    <color name="severeWarningI">#c42906</color>
+    <color name="extremeWarning">#661300</color>
+
+
 </resources>

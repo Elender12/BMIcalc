@@ -13,5 +13,15 @@
     <string name="female">Mujer</string>
     <string name="calc">Calcular</string>
     <string name="results">Resultados</string>
-
+    <string name="bmi">IMC:</string>
+    <string name="clasification">""</string>
+    <string name="lowWeight">Peso insuficiente</string>
+    <string name="normalWeight">Normopeso</string>
+    <string name="overweightI">Sobrepeso grado I</string>
+    <string name="overWeightII">Sobrepeso grado II</string>
+    <string name="obesityI">Obesidad de tipo I</string>
+    <string name="obesityII">Obesidad de tipo II</string>
+    <string name="obesityIII">Obesidad mórbida</string>
+    <string name="obesityIV">Obesidad extrema</string>
 </resources>
+
