@@ -45,6 +45,7 @@ public class CalcActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, ResultsActivity.class);
                 intent.putExtra("bmi", resultsBmi);
                 intent.putExtra("fcmax", resultsFCMax);
+                intent.putExtra("username", name.getText().toString());
                 startActivity(intent);
             }else {
                 Toast.makeText(this, "Rellene todos los campos, por favor", Toast.LENGTH_LONG).show();

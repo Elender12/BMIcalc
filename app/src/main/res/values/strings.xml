@@ -13,7 +13,7 @@
     <string name="female">Mujer</string>
     <string name="calc">Calcular</string>
     <string name="results">Resultados</string>
-    <string name="bmi">IMC:</string>
+    <string name="bmi">Índice Masa Corporal:</string>
     <string name="clasification">""</string>
     <string name="lowWeight">Peso insuficiente</string>
     <string name="normalWeight">Normopeso</string>
@@ -23,7 +23,10 @@
     <string name="obesityII">Obesidad de tipo II</string>
     <string name="obesityIII">Obesidad mórbida</string>
     <string name="obesityIV">Obesidad extrema</string>
-    <string name="sedentary">Estilo de vida sendentario:</string>
-    <string name="trained">Estilo de vida activo:</string>
+    <string name="sedentary">FcMax para un estilo de vida sendentario:</string>
+    <string name="trained">FcMax para un estilo de vida activo:</string>
+    <string name="hintHeight">valor en m. (ej: 1.74)</string>
+    <string name="hintWeight">valor en kg.</string>
+    <string name="gratitude">gracias por utlizar esta aplicación.</string>
 </resources>
 

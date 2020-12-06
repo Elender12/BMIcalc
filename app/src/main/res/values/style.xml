@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="fontTitle" >
+        <item name="android:textSize">30dp</item>
+        <item name="android:fontFamily">@font/almendra_font</item>
+        <item name="android:textColor">@color/main_color</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+    <style name="fontBody" >
+        <item name="android:fontFamily">@font/open_sans_regular</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:gravity">center_horizontal</item>
+
+    </style>
+    <style name="plainText">
+        <item name="android:fontFamily">@font/open_sans_semibold</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="editPlainText">
+        <item name="android:fontFamily">@font/open_sans_semibold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:inputType"> textCapWords </item>
+    </style>
+
+
+    <style name="gratitudeText">
+        <item name="android:fontFamily">@font/open_sans_semibold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textColor">@color/crimson</item>
+    </style>
+    <style name="radioBtn">
+        <item name="android:fontFamily">@font/open_sans_semibold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+</resources>
