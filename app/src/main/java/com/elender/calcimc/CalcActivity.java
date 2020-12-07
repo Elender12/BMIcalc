@@ -1,17 +1,17 @@
 package com.elender.calcimc;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
-
+/**
+ * @author Elena Cirstea
+ * Clase que realiza los cálculos necesarios
+ * */
 public class CalcActivity extends AppCompatActivity {
 
     EditText name, height, weight, age;
@@ -50,7 +50,6 @@ public class CalcActivity extends AppCompatActivity {
             }else {
                 Toast.makeText(this, "Rellene todos los campos, por favor", Toast.LENGTH_LONG).show();
             }
-
         });
     }
 
@@ -72,17 +71,18 @@ public class CalcActivity extends AppCompatActivity {
 
     /**
      * El metodo calcula la frecuencia cardiaca maxima según la edad y género
-     * La primera posicion almacena el valor para las personas sedentarias
-     * La segunda posicion almacena el valor para las personas entrenadas
+     * results [0] almacena el valor para las personas sedentarias
+     * results[1] almacena el valor para las personas entrenadas
      * @return double [] results
      */
     private double[] calculateFCMax() {
-        //primera posición valores para personas sedentarias, segunda posicion p
         double[] results = new double[2];
+        //se recoge el valor seleccionado en el radio button
         int checkedId =  radioGroup.getCheckedRadioButtonId();
         int ageValue = 0;
         boolean isValidAge;
         try{
+            //se verifica que se haya introducido un número correcto
             ageValue = Integer.parseInt(String.valueOf(age.getText()));
             isValidAge = true;
         }catch(NumberFormatException nfe){
@@ -99,6 +99,7 @@ public class CalcActivity extends AppCompatActivity {
             }
             if (checkedId == R.id.radioMale) {
                 //Hombres: FCmax = 209 – (0,7 x edad)
+                //Hombres sedentarios: 220 - edad
                 double sedentaryFCMax = 220 - ageValue;
                 double trainedFCMax = 209 - (0.7 *  ageValue);
                 results[0] = sedentaryFCMax;

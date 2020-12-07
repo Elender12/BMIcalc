@@ -1,21 +1,25 @@
 package com.elender.calcimc;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
-
-import java.text.DecimalFormat;
 import java.util.Locale;
 
+/**
+ * @author Elena Cirstea
+ * Clase que interpreta los resultados de la actividad anterior
+ * */
 public class ResultsActivity extends AppCompatActivity {
-    private static final String TAG = "resActivity" ;
     TextView results, bmiTV, bmiClasification, sedentaryTV, activeTV, TV_thanks;
     String name = "";
+
+    /**
+     * Método que se ejecuta cuando se inicia la aplicación
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,21 +28,19 @@ public class ResultsActivity extends AppCompatActivity {
         //recojo los datos desde la actividad anterior
         float bmiValue = 0;
         double [] fcMaxValues = new double[2];
-
         if (bundle != null) {
             bmiValue = bundle.getFloat("bmi");
             fcMaxValues = bundle.getDoubleArray("fcmax");
             this.name = bundle.getString("username");
-            Log.d(TAG, "onCreate: name es:_ "+this.name);
         }
+        //se asocian los elementos de la vista a variables de la clase
         results = findViewById(R.id.textViewResults);
         bmiTV = findViewById(R.id.TV_bmiValue);
         bmiClasification = findViewById(R.id.TV_clasification);
         sedentaryTV = findViewById(R.id.TV_sedentary);
         activeTV = findViewById(R.id.TV_active);
         TV_thanks = findViewById(R.id.TV_thanks);
-
-        // se definen las propiedades
+        // se definen las propiedades de la animacion
         PropertyValuesHolder pvhX = PropertyValuesHolder.ofFloat("scaleX", 2);
         PropertyValuesHolder pvhY = PropertyValuesHolder.ofFloat("scaleY", 2);
         // se asocian las propiedades con la vista a animar
@@ -47,11 +49,12 @@ public class ResultsActivity extends AppCompatActivity {
         animation.setDuration(4000);
         //se inicia la animación
         animation.start();
-
+        //se llama al método  que muestra los datos
         showResults(bmiValue, fcMaxValues);
     }
 
     /**
+     * Según los parámetros que recibe, muestra en pantalla unos valores u otros
      * @param bmiValue
      * @param fcMaxValue
      */
