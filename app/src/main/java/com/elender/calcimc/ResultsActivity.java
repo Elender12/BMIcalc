@@ -3,6 +3,7 @@ package com.elender.calcimc;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -37,10 +38,16 @@ public class ResultsActivity extends AppCompatActivity {
         activeTV = findViewById(R.id.TV_active);
         TV_thanks = findViewById(R.id.TV_thanks);
 
-
-        ObjectAnimator animation = ObjectAnimator.ofFloat(results, "scaleX", 2);
+        // se definen las propiedades
+        PropertyValuesHolder pvhX = PropertyValuesHolder.ofFloat("scaleX", 2);
+        PropertyValuesHolder pvhY = PropertyValuesHolder.ofFloat("scaleY", 2);
+        // se asocian las propiedades con la vista a animar
+        ObjectAnimator animation =  ObjectAnimator.ofPropertyValuesHolder(results, pvhX, pvhY);
+        //se establece la duración
         animation.setDuration(4000);
+        //se inicia la animación
         animation.start();
+
         showResults(bmiValue, fcMaxValues);
     }
 

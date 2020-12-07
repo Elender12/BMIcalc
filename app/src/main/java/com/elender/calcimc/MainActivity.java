@@ -22,9 +22,7 @@ public class MainActivity extends AppCompatActivity {
         img.setBackgroundResource(R.drawable.main_animation);
         anim = (AnimationDrawable) img.getBackground();
         anim.start();
-
         btnStart = findViewById(R.id.btnStart);
-
         btnStart.setOnClickListener(v -> {
             Intent intent = new Intent(this, CalcActivity.class);
             startActivity(intent);

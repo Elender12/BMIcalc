@@ -18,5 +18,4 @@
     <item
         android:duration="100"
         android:drawable="@drawable/frame6"/>
-
 </animation-list>

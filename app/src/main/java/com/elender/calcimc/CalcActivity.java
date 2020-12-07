@@ -13,14 +13,11 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 public class CalcActivity extends AppCompatActivity {
-    private static final String TAG = "CalcActivity";
+
     EditText name, height, weight, age;
     RadioGroup radioGroup;
     Button btn;
 
-    /**
-     * @param savedInstanceState
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,11 +35,14 @@ public class CalcActivity extends AppCompatActivity {
         age = findViewById(R.id.ET_age);
         radioGroup = findViewById(R.id.radioGroupGender);
         btn = findViewById(R.id.btnCalc);
+        //se calculan los resultados
         btn.setOnClickListener(v -> {
             float resultsBmi = calculateBMI();
             double [] resultsFCMax = calculateFCMax();
+            // se verifica que todos los campos estén rellenos
             if(radioGroup.getCheckedRadioButtonId() != -1 && height.getText().length() != 0 && weight.getText().length() != 0 && age.getText().length() != 0){
                 Intent intent = new Intent(this, ResultsActivity.class);
+                //se envian los datos a la siguente pantalla
                 intent.putExtra("bmi", resultsBmi);
                 intent.putExtra("fcmax", resultsFCMax);
                 intent.putExtra("username", name.getText().toString());
@@ -53,22 +53,28 @@ public class CalcActivity extends AppCompatActivity {
 
         });
     }
+
+    /**
+     * calcula el valor de índice corporal mediante la división del peso
+     * por la altura elevada al cuadrado
+     * @return float resultBMI
+     */
     private float calculateBMI() {
-        float result = 0;
+        float resultBMI = 0;
         try {
             float weightValue = Float.parseFloat(String.valueOf(weight.getText()));
             float heightValue = Float.parseFloat(String.valueOf(height.getText()));
-            result = (float) (weightValue / Math.pow(heightValue, 2));
+            resultBMI = (float) (weightValue / Math.pow(heightValue, 2));
         } catch (NumberFormatException nfe) {
         }
-        return result;
+        return resultBMI;
     }
 
     /**
-     * El metodo calcula la frecuencia cardiaca maxima
-     * @return double [] resultados
+     * El metodo calcula la frecuencia cardiaca maxima según la edad y género
      * La primera posicion almacena el valor para las personas sedentarias
      * La segunda posicion almacena el valor para las personas entrenadas
+     * @return double [] results
      */
     private double[] calculateFCMax() {
         //primera posición valores para personas sedentarias, segunda posicion p
@@ -88,7 +94,6 @@ public class CalcActivity extends AppCompatActivity {
                 //Mujeres sedentarias: 225 - edad
                 double sedentaryFCMax = 225 - ageValue;
                 double trainedFCMax = 214 - (0.8 *  ageValue);
-                Log.d(TAG, "onCheckedChanged: "+sedentaryFCMax+" "+trainedFCMax);
                 results[0] = sedentaryFCMax;
                 results[1] = trainedFCMax;
             }
